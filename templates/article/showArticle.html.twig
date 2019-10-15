@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ma liste d'articles{% endblock %}
+
+{% block body %}
+<style>
+ td{
+    border: 1px solid black;
+    padding: 2px;
+    font-size:15px;
+}
+ th{
+    border: 1px solid black;
+
+}
+
+</style>
+</div>
+<br> 
+    <h1>Liste de mes Articles</h1>
+    <a href="{{path('articles_add')}}" class="btn btn-primary" id="btnad">Ajouter</a>
+    <br>
+    <table class="table-primary">
+    <thead>
+    <tr>
+      <th scope="col">ID</th> 
+      <th scope="col">Libellé</th>
+      <th scope="col">lien image</th>
+      <th scope="col">Prix</th>
+     <th scope="col">description</th>
+     <th scope="col">Modification</th>
+     <th scope="col">Supression</th>
+    </tr>
+    <tbody>
+        {% for article in articles %}
+            <tr class="table-info" id="#block_{{article.id}}">
+                <td>{{article.id}}</td>
+                <td>{{article.libelle}}</td>
+                <td>{{article.image}}</td>
+                <td>{{article.prix}}</td>
+                <td>{{article.description}}</td>
+                <td><center><a href="{{path('article_update', {'id' : article.id})}}" class="btn btn-danger" onclick="return confirm('Etes vous sur de vouloir modifier une annonce ?\n{{article.libelle}}')"><i class="fas fa-pen"></i></a></center></td>
+                <td><center><a href="{{path('article_delete', {'id' : article.id})}}" data-action="delete" onclick="return confirm('Etes vous sur de vouloir supprimer une annonce ?\n{{article.libelle}}')" data-target="#block_{{article.id}}" class="btn btn-primary"><i class="fas fa-trash-alt"></i></a></center></td>
+
+                </tr>
+        {% endfor %}
+        </tbody>
+</table> 
+{% endblock %}

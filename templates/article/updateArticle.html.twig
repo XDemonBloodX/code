@@ -1,0 +1,19 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Modification d'article{% endblock %}
+{% form_theme form _self %}
+{% block body %}
+<div class="container">
+    <h1 style="color:#EFCFFB;"><u>Modifié d'Article:</u></h1>
+    {{ form_start(form) }}
+    <div class="formulaire_register" style="color:blue;">
+    {{ form_widget(form) }}
+    <br>
+    <button type="submit" class="btn btn-success" style="margin-top:20px;">Confirmation de l'inscription</button>
+    <br>
+    <a href="{{path('articles_liste')}}" class="btn btn-primary">Annuler</a>
+    {{ form_end(form) }}
+    
+</div>
+</div>
+{% endblock %}
